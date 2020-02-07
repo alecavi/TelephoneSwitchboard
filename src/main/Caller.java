@@ -9,9 +9,9 @@ import java.util.Date;
  */
 public class Caller 
 {
-	String name;
-	String phoneNumber;
-	Date callDateTime;
+	private String name;
+	private String phoneNumber;
+	private Date callDateTime;
 	
 	/**
 	 * Creates a caller object with the given parameters and the current date and time
@@ -50,5 +50,16 @@ public class Caller
 	public Date getCallDateTime() 
 	{
 		return callDateTime;
+	}
+	
+	/**
+	 * Returns a printable representation of this caller name and phone number, as well as
+	 * how long it has been waiting for
+	 */
+	@Override
+	public String toString()
+	{
+		long timeWaited = new Date().getTime() - callDateTime.getTime();
+		return name + " - " + phoneNumber + "\nTime waited: " + timeWaited + "seconds";
 	}
 }
